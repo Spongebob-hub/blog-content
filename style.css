@@ -35,7 +35,7 @@
 
 body {
   font-family: var(--body-font);
-  background-color: transparent;
+  background-color: var(--body-color);
   color: var(--text-color);
 }
 
@@ -87,6 +87,9 @@ img {
   display: block;
   font-size: var(--small-font-size);
   margin-bottom: .25rem;
+  @media screen and (max-width: 768px) {
+    font-size: 0.8rem; /* Adjust the font size as needed */
+  }
 }
 
 .card__title {
@@ -94,6 +97,9 @@ img {
   font-weight: 500;
   color: var(--title-color);
   margin-bottom: .75rem;
+  @media screen and (max-width: 768px) {
+    font-size: 1.2rem; /* Adjust the font size as needed */
+  }
 }
 
 .card__button {
@@ -101,10 +107,17 @@ img {
   font-size: var(--small-font-size);
   font-weight: 500;
   color: var(--first-color);
+  @media screen and (max-width: 768px) {
+    font-size: 0.9rem; /* Adjust the font size as needed */
+  }
 }
 
 .card__button:hover {
-  text-decoration: underline;
+  @media screen and (max-width: 768px) {
+    text-decoration: none; /* Remove underline on hover for mobile */
+    background-color: var(--first-color, #82274c); /* Change background color on hover */
+    color: white; /* Ensure text color is readable on the new background */
+  }
 }
 
 /* Naming animations in hover */
@@ -164,12 +177,24 @@ img {
   }
 }
   .card__container {
-    grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* Default for larger screens */
+  
+  @media screen and (max-width: 768px) {  /* For small screens (mobile) */
+    grid-template-columns: repeat(2, 1fr);
   }
+
+  @media screen and (max-width: 480px) {  /* For very small screens (small mobile) */
+    grid-template-columns: 1fr;
+  }
+}
   .card__img {
     width: 348px;
+    max-width: 100%; /* Adjust based on desired image size */
+  max-height: 500px;
   }
   .card__data {
     width: 316px;
     padding-inline: 2.5rem;
+    max-width: 100%;
   }
+
